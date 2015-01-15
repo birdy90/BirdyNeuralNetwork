@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ns_console", "ns_console\ns_console.csproj", "{69E977EC-D0F3-446C-ADC8-B47F0B50EBAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirdyNetwork", "BirdyNetwork\BirdyNetwork.csproj", "{C41D0564-A804-4B17-B51E-C988ED3F051A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69E977EC-D0F3-446C-ADC8-B47F0B50EBAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69E977EC-D0F3-446C-ADC8-B47F0B50EBAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69E977EC-D0F3-446C-ADC8-B47F0B50EBAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69E977EC-D0F3-446C-ADC8-B47F0B50EBAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C41D0564-A804-4B17-B51E-C988ED3F051A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C41D0564-A804-4B17-B51E-C988ED3F051A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C41D0564-A804-4B17-B51E-C988ED3F051A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C41D0564-A804-4B17-B51E-C988ED3F051A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
