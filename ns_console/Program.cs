@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.IO;
 using System.Linq;
 using BirdyNetwork;
+using BirdyNetwork.Classes;
 using NeuralNetworkLibBase;
 
 namespace ns_console
@@ -12,7 +14,7 @@ namespace ns_console
     {
         private static NeuralNetwork _neuralNetwork;
 
-        private static ConstructionParameters _networkParameters;
+        private static ConstructionArgs _networkParameters;
 
         private static ConsoleKey Menu()
         {
@@ -121,9 +123,9 @@ namespace ns_console
             try
             {
                 var file = File.ReadLines(filename).ToList();
-                _networkParameters = new ConstructionParameters
+                _networkParameters = new ConstructionArgs()
                 {
-                    HiddenLayers = file[1].Split(' ').Select(t => int.Parse(t)).ToList(),
+                    HiddenLayers = new ObservableCollection<int>(file[1].Split(' ').Select(t => int.Parse(t))),
                     Inputs = int.Parse(file[0]),
                     Outputs = int.Parse(file[2])
                 };
@@ -156,9 +158,9 @@ namespace ns_console
                         line = sr.ReadLine();
                     } while (line[0] != '#');
 
-                    _networkParameters = new ConstructionParameters
+                    _networkParameters = new ConstructionArgs()
                     {
-                        HiddenLayers = lines[1].Split(' ').Select(int.Parse).ToList(),
+                        HiddenLayers = new ObservableCollection<int>(lines[1].Split(' ').Select(t => int.Parse(t))),
                         Inputs = int.Parse(lines[0]),
                         Outputs = int.Parse(lines[2])
                     };

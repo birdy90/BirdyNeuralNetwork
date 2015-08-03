@@ -6,6 +6,7 @@ using BirdyNetwork.Classes.NeuralNetwork;
 using NeuralNetworkLibBase;
 using System.ComponentModel.Composition;
 using System.IO;
+using BirdyNetwork.Classes;
 
 namespace BirdyNetwork
 {
@@ -226,18 +227,21 @@ namespace BirdyNetwork
 
         #region Interface
 
-        public void Create(ConstructionParameters parameters)
+        public void Create(object argsRaw)
         {
+            var args = argsRaw as ConstructionArgs;
+            if (args == null)
+                throw new Exception("Arguments type mismatch") { Data = { { "Arguments", argsRaw } } };
             Empty();
-            _layers.Add(new Layer(parameters.Inputs));
+            _layers.Add(new Layer(args.Inputs));
             Nodes.AddRange(Inputs);
-            foreach (int layerCount in parameters.HiddenLayers)
+            foreach (int layerCount in args.HiddenLayers)
             {
                 var l = new Layer(layerCount);
                 _layers.Add(l);
                 Nodes.AddRange(l);
             }
-            _layers.Add(new Layer(parameters.Outputs));
+            _layers.Add(new Layer(args.Outputs));
             Nodes.AddRange(Outputs);
             ConnectLayersFull();
             GetInOutRibsReferences();
@@ -264,6 +268,11 @@ namespace BirdyNetwork
             get { return Inputs; }
         }
 
+        public Type ArgsType
+        {
+            get { return typeof (ConstructionArgs); }
+        }
+
         public IEnumerable<ILayer> HiddenLayers
         {
             get { return _layers.Where(t => t != Inputs && t != Outputs); }
@@ -272,6 +281,21 @@ namespace BirdyNetwork
         public ILayer OutputLayer
         {
             get { return Outputs; }
+        }
+
+        public string Name
+        {
+            get { return "Birdy Neural Network"; }
+        }
+
+        public string Description
+        {
+            get { return "TADAM!"; }
+        }
+
+        public string Author
+        {
+            get { return "SHMILONELY"; }
         }
 
         #endregion
